@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -26,6 +27,19 @@ public class MainActivity extends AppCompatActivity {
         btnDisplay = findViewById(R.id.buttonDisplay);
         etInput = findViewById(R.id.editTextInput);
         tgbutt = findViewById(R.id.toggleButtonEnabled);
+
+        tgbutt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    etInput.setEnabled(true);
+                    tvDisplay.setEnabled(true);
+                } else {
+                    etInput.setEnabled(false);
+                    tvDisplay.setEnabled(false);
+                }
+            }
+        });
 
         btnDisplay.setOnClickListener(new OnClickListener() {
             @Override
